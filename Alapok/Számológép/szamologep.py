@@ -1,0 +1,14 @@
+a=int(input())
+b=int(input())
+print(f"a+b\t=\t{a+b}")
+print(f"a-b\t=\t{a-b}")
+print(f"b-a\t=\t{b-a}")
+print(f"a*b\t=\t{a*b}")
+# print(f"a/b\t=\t{int(a/b)}") "a // ugyan az"
+# print(f"b/a\t=\t{int(b/a)}") "a // ugyan az"
+print(f"a/b\t=\t{a//b}")
+print(f"b/a\t=\t{b//a}")
+print(f"a/b\t=\t{round(a/b,2)}")
+print(f"b/a\t=\t{round(b/a,2)}")
+print(f"a%b\t=\t{int(a%b)}")
+print(f"b%a\t=\t{int(b%a)}")

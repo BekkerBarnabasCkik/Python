@@ -1,0 +1,8 @@
+ev=int(input())
+honap=int(input())
+nap=int(input())
+ev2=int(input())
+honap2=int(input())
+nap2=int(input())
+összesnap=(ev2*365+honap2*30+nap2)-(ev*365+honap*30+nap)
+print(f"Születésönk óta eltelt napok száma: {összesnap}")
