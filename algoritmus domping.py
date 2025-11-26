@@ -42,3 +42,24 @@ for i in range(len(t)-1, -1, -1):
         print(t[i])
     else:
         print(t[i], end=", ")
+#----------5.Feladat-------------
+for i in range(len(t)-1, 0, -1):
+    szam=0
+    if t[i]<t[szam]:
+        while szam!=i:
+            if t[i]<t[szam]:
+                t.insert(szam, t[i])
+                t.pop(i+1)
+            else:
+                szam+=1
+for i in range(0, len(t), 1):
+    if i==len(t)-1:
+        print(t[i])
+    else:
+        print(t[i], end=", ")
+#-------6.Feladat--------------
+alkalom=1
+for i in range(2, n-2+1, 1):
+    alkalom*=i
+print(f"{round(((n-2)*2-1)*11.23, 2)}")
+print(alkalom)
