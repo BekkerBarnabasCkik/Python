@@ -14,17 +14,14 @@ def generate_number():
     rest = random.randint(0, 999)  # 3 tetszőleges számjegy
     return int(f"{first}{rest:03d}")
 
-numbers = []
+ertekek = []
 
 # 95% negatív (950 db), 5% pozitív (50 db)
-for _ in range(95):
-    numbers.append(-generate_number())
+for _ in range(950):
+    ertekek.append(-generate_number())
 
-for _ in range(5):
-    numbers.append(generate_number())
+for _ in range(50):
+    ertekek.append(generate_number())
 
 # Keverjük össze a listát
-random.shuffle(numbers)
-
-numbers  # Ez a kész Benford-törvénnyel egyező 1000 elemű számsorozat
-print(numbers)
+random.shuffle(ertekek)

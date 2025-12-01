@@ -1,0 +1,5 @@
+szamok=str(input()).split(",")
+ra=int(szamok[0])
+rb=int(szamok[1])
+ea=1/(1+pow(10, (rb-ra)/400))
+print(ea)
