@@ -94,17 +94,24 @@ for i in range(merkozesekszama):
     while szam1==szam2:
         szam1=random.randint(1, hossz)
         szam2=random.randint(1, hossz)
+    valoszinuseg=random.randint(1,10)
     if valoszinuseg<10:
         valoszinuseg=1
     else:
         valoszinuseg=0
-    valoszinuseg=random.randint(1,10)
     ra=t[szam1-1]
     rb=t[szam2-1]
     ea=1/(1+pow(10, (rb-ra)/400))
-    t[szam1-1]=round(t[szam1-1]+(32*(valoszinuseg-ea)), 2)
+    if valoszinuseg==1:
+        t[szam1-1]=round(t[szam1-1]+(32*(1-ea)), 2)
+        t[szam2-1]=round(t[szam1-1]+(32*(0-ea)), 2)
+    else:
+        t[szam1-1]=round(t[szam1-1]+(32*(0-ea)), 2)
+        t[szam2-1]=round(t[szam1-1]+(32*(1-ea)), 2)
     if t[szam1-1]<0:
         t[szam1-1]=0
+    elif t[szam2-1]<0:
+        t[szam2-1]=0
     for i in range(len(t)-1, 0, -1):
         szam=0
         while szam!=i:

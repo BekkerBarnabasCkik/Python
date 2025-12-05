@@ -1,4 +1,4 @@
-f=open("be.txt")
+f=open("proba.txt")
 t=f.readlines()
 f.close()
 s="alma"
