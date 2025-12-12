@@ -1,4 +1,4 @@
-f=open("be.txt")
+f=open("proba.txt")
 t=f.read()
 f.close()
 ertekek=[]
