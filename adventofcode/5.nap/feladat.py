@@ -13,6 +13,8 @@ for i in range(len(t)):
     else:
         ertekek.append(t[i])
 print(hatarok,ertekek)
+
+
 for i in range(len(hatarok)):
     alsoertek=0
     felsoertek=0
@@ -20,6 +22,7 @@ for i in range(len(hatarok)):
     while i<len(hatarok) and hatarok[i]!="-" and hatarok[i]!="\n":
         alsoszamjegyek.append(hatarok[i])
         i+=1
+    i+=len(alsoszamjegyek)-1
     print(alsoszamjegyek)
     
 
