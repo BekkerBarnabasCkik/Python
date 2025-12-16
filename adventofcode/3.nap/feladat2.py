@@ -1,4 +1,4 @@
-f=open("proba.txt")
+f=open("be2.txt")
 t=f.read()
 f.close() 
 ertekek=[]
@@ -15,13 +15,23 @@ for i in t:
 
 
 osszes=0
-max=0
-maxuj=0
-for i in range(0,len(ertekek)//hossz,1):
-    for j in range(11,1,-1):
-        maxuj=max+1
-        for k in range(max+1, hossz-j, 1):
-            if ertekek[maxuj]<ertekek[k]:
-                maxuj=k
-        max=maxuj
-        print(ertekek[maxuj])
+max=1
+szamjegyek=[]
+ertek=0
+for i in range(0,(len(ertekek)+1)//hossz,1):
+    szamjegyek=[]
+    max=i*hossz
+    if max<0:
+        max=0
+    for j in range(12, 0, -1):
+        for k in range(max, (hossz-j)+(hossz*i)+1, 1):
+            if ertekek[max]<ertekek[k]:
+                max=k
+        szamjegyek.append(ertekek[max])
+        max+=1
+    for l in range(len(szamjegyek)):
+        ertek+=szamjegyek[l]*(pow(10,len(szamjegyek)-(l-1)-2))
+    osszes+=ertek
+    ertek=0
+print(osszes)
+
