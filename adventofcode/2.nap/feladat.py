@@ -51,7 +51,7 @@ def feladat(t):
 # print(ertek[:hossz])
 
 def main():
-    t=intervallumMeghatarozas(fajlbeovlasas("proba.txt"))
+    t=intervallumMeghatarozas(fajlbeovlasas("be.txt"))
     print(feladat(t))
 
 main()

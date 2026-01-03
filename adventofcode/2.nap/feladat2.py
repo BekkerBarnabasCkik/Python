@@ -1,4 +1,4 @@
-def fajlbeolvasas(fajl):
+def Fajlbeolvasast(fajl):
     f=open(fajl)
     t=f.read()
     f.close()
@@ -7,60 +7,54 @@ def fajlbeolvasas(fajl):
         i=i.strip()
         ertek=(i)
         ertekek.append(ertek)
-    return(ertekek)
+    
+    return ertekek
 
-def tTulajdonsag(tomb, i):
-    return str(tomb[i])!="-" and str(tomb[i])!=","
-
-def tombletrehozas(ertekek):
+def TömLetrahozas(tömb):
     t=[]
     ertek=""
-    for i in range(len(ertekek)):
-        if tTulajdonsag(ertekek, i):
-            ertek+=str(ertekek[i])
+    for i in range(len(tömb)):
+        if str(tömb[i])!="-" and str(tömb[i])!=",":
+            ertek+=str(tömb[i])
         else:
             t.append(str(ertek))
             ertek=""
     t.append(str(ertek))
+
     return t
 
+def tTulajdonsag(m, hatar, szam):
+    return m<(len(hatar)-(len(hatar)//szam)) and hatar[m]==hatar[m+(len(hatar)//szam)]
 
-# def tombolKivagunkEgyDarabot(tomb, mennyit, honnan):
-#     mit csinál
+def SikerSzamlalas(hatar, siker):
 
-#     return darabTomb
+    for k in range(len(hatar), 1, -1):
+        if len(hatar)%(k)==0:
+            siker=SikerSzamlalas2(hatar, k, siker)
+    return siker
 
-# def egyezoe()
-    
-#     return true
-def sikerTulajdonasag(m, elemhossza, darabolasSzam):
-    return m<(len(elemhossza)-(len(elemhossza)//darabolasSzam)) and elemhossza[m]==elemhossza[m+(len(elemhossza)//darabolasSzam)]
-
-def sikerekSzama(elemhossza, darabolasSzam):
+def SikerSzamlalas2(hatar, szam, siker):
     m=0
-    while sikerTulajdonasag(m, ):
-        #
+    while tTulajdonsag(m, hatar, szam):
         m+=1
-    if m==(len(elemhossza)-(len(elemhossza)//darabolasSzam)):
+    if m==(len(hatar)-(len(hatar)//szam)):
         siker+=1
+    
+    return siker
 
-def sikerVizsgálat(elemhossza):
-    siker=0
-    for k in range(len(elemhossza), 1, -1):
-        if len(elemhossza)%(k)==0:
-            sikerekSzama(elemhossza, k)
-    if siker>0:
-        osszes+=int(elemhossza)
-    return(osszes)
-
-def feladat(tömb, i):
+def Feladat(tömb):
     osszes=0
     for i in range(0, len(tömb), 2):
         for j in range(int(tömb[i]), int(tömb[i+1])+1, 1):
             j=str(j)
-            sikerVizsgálat(j)
-    return(osszes)
+            siker=0
+            if SikerSzamlalas(j, siker)>0:
+                osszes+=int(j)
+    
+    return osszes
 
 def main():
-    t=tombletrehozas(fajlbeolvasas("be.txt"))
-    feladat(t)
+    t=TömLetrahozas(Fajlbeolvasast("be.txt"))
+    print(Feladat(t))
+
+    main()

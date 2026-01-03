@@ -13,6 +13,11 @@ for i in t:
         hossz=0
 
 
+def maximumKivalasztas(max, hossz, i, j, ertekek):
+    for k in range(max, (hossz-j)+(hossz*i)+1, 1):
+        if ertekek[max]<ertekek[k]:
+            max=k
+    return max
 
 osszes=0
 max=1
@@ -24,11 +29,9 @@ for i in range(0,(len(ertekek)+1)//hossz,1):
     if max<0:
         max=0
     for j in range(12, 0, -1):
-        for k in range(max, (hossz-j)+(hossz*i)+1, 1):
-            if ertekek[max]<ertekek[k]:
-                max=k
+        maximumKivalasztas(max, hossz, i, j, ertekek, szamjegyek)
         szamjegyek.append(ertekek[max])
-        max+=1
+        max+=1   
     for l in range(len(szamjegyek)):
         ertek+=szamjegyek[l]*(pow(10,len(szamjegyek)-(l-1)-2))
     osszes+=ertek

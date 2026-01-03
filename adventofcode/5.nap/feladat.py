@@ -1,29 +1,49 @@
-f=open("proba.txt")
-t=f.read()
-f.close()
-hatarok=[]
-ertekek=[]
-valtas=False
-for i in range(len(t)):
-    if valtas==False:
-        if t[i]=="\n" and t[i+1]=="\n":
-            valtas=True
+def SzetszedFajlbol(fajl):
+    f=open(fajl)
+    t=f.read()
+    f.close()
+    hatarok=[]
+    szamok=[]
+    ertek=""
+    atvaltas=0
+    for i in t:
+        i=i.strip()
+        if i!="-" and i!="":
+            ertek+=str(i)
+        elif ertek=="":
+            atvaltas=1
         else:
-            hatarok.append(t[i])
-    else:
-        ertekek.append(t[i])
-print(hatarok,ertekek)
+            if atvaltas==0:
+                hatarok.append(int(ertek))
+            else:
+                szamok.append(int(ertek))
+            ertek=""
+    szamok.append(int(ertek))        
+    return hatarok, szamok
 
 
-for i in range(len(hatarok)):
-    alsoertek=0
-    felsoertek=0
-    alsoszamjegyek=[]
-    while i<len(hatarok) and hatarok[i]!="-" and hatarok[i]!="\n":
-        alsoszamjegyek.append(hatarok[i])
-        i+=1
-    i+=len(alsoszamjegyek)-1
-    print(alsoszamjegyek)
+def feladat(hatarok, ertekek):
+    db=0
+    for i in range(len(ertekek)):
+        ertek=ertekek[i]
+        j=1
+        while (j<len(hatarok)-2) and (ertek<hatarok[j-1] or ertek>hatarok[j]):
+            j+=2
+        if j+1<len(hatarok):
+            db+=1
+    return db
+
+
+def main(fajl):
+    eredmenyek=SzetszedFajlbol(fajl)
+    hatarok=eredmenyek[0]
+    ertekek=eredmenyek[1]
+    print(hatarok)
+    print(ertekek)
+    print(feladat(hatarok, ertekek))
+
+main("be1.txt")
+
+
     
-
 
