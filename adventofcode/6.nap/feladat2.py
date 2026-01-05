@@ -145,7 +145,48 @@ def hosszmeghatarozas(tömb):
 
     return len(eredmenyek)
 
+def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
+    joszamok=[]
+    for i in range(len(alapszamok)//hossz):
+        joszamok.append(str(alapszamok[round(len(alapszamok)/hossz-oszlop+i*hossz)]))
+    max=maximum(joszamok)
+    ertek=""
+    ertekek=[]
+    if elojelek[oszlop]=="*":
+        for i in range(max):
+            for j in range(len(joszamok)):
+                if len(joszamok[j])>i:
+                    ertek+=str(joszamok[j][i])
+            ertekek.append(int(ertek))
+            ertek=""
+    print("ertek")
+    print(ertekek)
+    #Az összadásos számokat írja ki de jól
 
+def maximum(joszamok):
+    max=len(str(joszamok[0]))
+    for i in range(1, len(joszamok), 1):
+        if len(str(joszamok[i]))>max:
+            max=len(str(joszamok[i]))
+
+    return max
+
+
+
+def Feladat(alapszamok, hossz, elojelek):
+    for i in range(hossz):
+        SzamMeghatarozas(alapszamok, hossz, i, elojelek)
+
+
+def main(fajl):
+    eredmenyek=Beolvasa(fajl)
+    szamok=eredmenyek[0]
+    elojelek=eredmenyek[1]
+    hossz=eredmenyek[2]
+
+    Feladat(szamok, hossz, elojelek)
+
+main("proba.txt")
 # def szamokMegahatrozasa(szamok, adottoszlop, hossz):
 #     joszamok=[]
 #     for j in range(3):
