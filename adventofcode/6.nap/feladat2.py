@@ -145,23 +145,50 @@ def hosszmeghatarozas(tömb):
 
     return len(eredmenyek)
 
+def összeadas(szamok):
+    eredmeny=0
+    for i in range(len(szamok)):
+        eredmeny+=szamok[i]
+
+    return eredmeny
+
+
+def szorzas(szamok):
+    eredmeny=1
+    for i in range(len(szamok)):
+        eredmeny*=szamok[i]
+
+    return eredmeny
+
 def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
+    összeredmeny=0
     joszamok=[]
     for i in range(len(alapszamok)//hossz):
         joszamok.append(str(alapszamok[round(len(alapszamok)/hossz-oszlop+i*hossz)]))
     max=maximum(joszamok)
     ertek=""
     ertekek=[]
-    if elojelek[oszlop]=="*":
+    if elojelek[len(elojelek)-1-oszlop]=="+":
         for i in range(max):
             for j in range(len(joszamok)):
                 if len(joszamok[j])>i:
                     ertek+=str(joszamok[j][i])
             ertekek.append(int(ertek))
             ertek=""
+        összeredmeny+=összeadas(ertekek)
+    else:
+        for i in range(max):
+            for j in range(len(joszamok)):
+                if len(joszamok[j])>i:
+                    ertek+=str(joszamok[j][len(joszamok[j])-1-i])
+            ertekek.append(int(ertek))
+            ertek=""
+        összeredmeny+=szorzas(ertekek)
     print("ertek")
     print(ertekek)
     #Az összadásos számokat írja ki de jól
+
+    return összeredmeny
 
 def maximum(joszamok):
     max=len(str(joszamok[0]))
@@ -174,9 +201,11 @@ def maximum(joszamok):
 
 
 def Feladat(alapszamok, hossz, elojelek):
+    összeredmeny=0
     for i in range(hossz):
-        SzamMeghatarozas(alapszamok, hossz, i, elojelek)
+        összeredmeny+=SzamMeghatarozas(alapszamok, hossz, i, elojelek)
 
+    return összeredmeny
 
 def main(fajl):
     eredmenyek=Beolvasa(fajl)
@@ -184,9 +213,14 @@ def main(fajl):
     elojelek=eredmenyek[1]
     hossz=eredmenyek[2]
 
-    Feladat(szamok, hossz, elojelek)
+    print(Feladat(szamok, hossz, elojelek))
 
-main("proba.txt")
+main("be.txt")
+
+
+
+
+
 # def szamokMegahatrozasa(szamok, adottoszlop, hossz):
 #     joszamok=[]
 #     for j in range(3):
