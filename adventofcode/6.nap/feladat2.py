@@ -32,6 +32,7 @@ def hosszmeghatarozas(tömb):
             eredmenyek.append(int(ertek))
             ertek=""
 
+
     return len(eredmenyek)
 
 def összeadas(szamok):
@@ -58,7 +59,6 @@ def ertekekMeghatarozas(joszamok, elojel, i, ertekek):
             ertek+=str(joszamok[j][len(joszamok[j])-1-i])
     ertekek.append(int(ertek))
     ertek=""
-    print(ertekek)
     return ertekek
 
 def Kiszamolas(elojelek, oszlop, joszamok, ertekek, max):
@@ -75,7 +75,7 @@ def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
     összeredmeny=0
     joszamok=[]
     for i in range(len(alapszamok)//hossz):
-        joszamok.append(str(alapszamok[round(len(alapszamok)/hossz-oszlop+i*hossz)]))
+        joszamok.append(str(alapszamok[hossz-oszlop+i*hossz-1]))
     max=maximum(joszamok)
     ertek=""
     ertekek=[]
@@ -85,7 +85,7 @@ def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
     # print("ertek")
     # print(ertekek)
     #Az összadásos számokat írja ki de jól
-
+    print(ertekek, elojelek[len(elojelek)-1-oszlop])
     return összeredmeny
 
 def maximum(joszamok):
@@ -102,7 +102,6 @@ def Feladat(alapszamok, hossz, elojelek):
     összeredmeny=0
     for i in range(hossz):
         összeredmeny+=SzamMeghatarozas(alapszamok, hossz, i, elojelek)
-
     return összeredmeny
 
 def main(fajl):
@@ -112,5 +111,9 @@ def main(fajl):
     hossz=eredmenyek[2]
 
     print(Feladat(szamok, hossz, elojelek))
+    print("hossz")
+    print(hossz)
+    print(len(elojelek))
 
 main("be.txt")
+
