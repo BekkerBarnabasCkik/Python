@@ -50,21 +50,22 @@ def szorzas(szamok):
 
     return eredmeny
 
-def ertekekMeghatarozas(joszamok, elojel, i, ertekek):
+def ertekekMeghatarozas(joszamok, elojel, i, ertekek, max):
     ertek=""
     for j in range(len(joszamok)):
-        if elojel=="+" and len(joszamok[j])>i:
-            ertek+=str(joszamok[j][i])
+        if elojel=="+" and len(joszamok[j])>=max-i:
+            ertek+=str(joszamok[j][max-1-i])
         elif elojel=="*" and len(joszamok[j])>i:
             ertek+=str(joszamok[j][len(joszamok[j])-1-i])
-    ertekek.append(int(ertek))
+    if ertek!="":    
+        ertekek.append(int(ertek))
     ertek=""
     return ertekek
 
 def Kiszamolas(elojelek, oszlop, joszamok, ertekek, max):
     elojel=elojelek[len(elojelek)-1-oszlop]
     for i in range(max):
-        ertekek=ertekekMeghatarozas(joszamok, elojel, i, ertekek)
+        ertekek=ertekekMeghatarozas(joszamok, elojel, i, ertekek, max)
     if elojel=="+":
         return összeadas(ertekek)
     else:
@@ -81,10 +82,6 @@ def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
     ertekek=[]
     összeredmeny=Kiszamolas(elojelek, oszlop, joszamok, ertekek, max)
 
-
-    # print("ertek")
-    # print(ertekek)
-    #Az összadásos számokat írja ki de jól
     print(ertekek, elojelek[len(elojelek)-1-oszlop])
     return összeredmeny
 
