@@ -1,0 +1,23 @@
+#a 10.c és 10.b osztályos tanulók a focipályán hógolyóznak.
+#A tanulóknak szám azonosítókkal látjuk el őket.
+#Legyen két tömbünk, az első tömb mutatja a, hogy ki az aki dob.
+#A másik tömb mutatja, hogy kit dobnak meg. Mint két tömb ugyan olyan hosszú.
+#Írj egy programot, ami meghatározza, melyik közülük az informatika tanár!
+#Akit a legtöbbször találtak el!
+
+#Írj egy függvényt, ami meghatározza a maximumot, paraméterben megkapja a
+#a (darab) értkek tömbjét. Visszatér: maxIndex
+
+#Írj egy függvényt, ami meghatározza, hogy kit hányszor dobtak meg! Paraméterben
+#kapja meg a tömböt, tulajdonság (kit). Visszatér: darabszámmal
+
+#Írj egy függvényt, ami átmásolja, hogy kit hányszor dobtak meg! Paraméterben
+#kapja meg a tömböt. Visszatér: tömbbel.
+
+#Írj egy függvényt, ami a paraméterben mekapott tömböt feltöltöl N darab számmal, 
+# A és B közötti értékkel. Paraméter: N, A, B. Visszatér: feltöltött tömbbbel
+
+#Írj egy eljárást, ami kiírja a tömböt. Paramtérben: tömböt. Visszatér: NEM
+
+#A fő függvényben, hívjük meg a tömbfeltöltést 2x-szer (100,1,20), (100,1,10)
+#írjuk ki kis 2x hírjuk meg a kiírást. Majd írjuk ki, hogy ki az infótanár!
