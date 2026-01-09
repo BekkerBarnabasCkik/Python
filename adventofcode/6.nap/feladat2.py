@@ -145,6 +145,7 @@ def hosszmeghatarozas(tömb):
 
     return len(eredmenyek)
 
+
 def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
     joszamok=[]
     for i in range(len(alapszamok)//hossz):
@@ -152,16 +153,23 @@ def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
     max=maximum(joszamok)
     ertek=""
     ertekek=[]
-    if elojelek[oszlop]=="*":
+    if elojelek[len(elojelek)-1-oszlop]=="+":
+        for i in range(max-1, -1, -1):
+            for j in range(len(joszamok)):
+                if len(joszamok[j])>i:
+                    ertek+=str(joszamok[j][i])
+            ertekek.append(int(ertek))
+            ertek=""
+        print("+")
+    else:
         for i in range(max):
             for j in range(len(joszamok)):
                 if len(joszamok[j])>i:
                     ertek+=str(joszamok[j][i])
             ertekek.append(int(ertek))
             ertek=""
-    print("ertek")
+        print("*")
     print(ertekek)
-    #Az összadásos számokat írja ki de jól
 
 def maximum(joszamok):
     max=len(str(joszamok[0]))
@@ -204,3 +212,24 @@ main("proba.txt")
 
 
 # main("proba.txt")
+
+
+# if elojelek[oszlop]=="*":
+#         for i in range(max):
+#             for j in range(len(joszamok)):
+#                 if len(joszamok[j])>i:
+#                     ertek+=str(joszamok[j][i])
+#             ertekek.append(int(ertek))
+#             ertek=""
+#         print("+")
+#     #Összeadásos számok
+#     #szorzásnál jobbra összeadásnal balra
+#     else:
+#         for i in range(max-1, -1, -1):
+#             for j in range(len(joszamok)):
+#                 if len(joszamok[j])>i:
+#                     ertek+=str(joszamok[j][i])
+#             ertekek.append(ertek)
+#             ertek=""
+#         print("*")
+#     print(ertekek)
