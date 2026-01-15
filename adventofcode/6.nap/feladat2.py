@@ -8,15 +8,12 @@ def Beolvasa(fajl):
     elojelek=[]
     szamok=[]
     ertek=""
-    for i in t:
-        i=i.strip()
-        if i!="" and i!="+" and i!="*":
-            ertek+=str(i)
-        elif i=="+" or i=="*":
+    for i in range(len(t)):
+        i=t[i].strip()
+        if i=="+" or i=="*":
             elojelek.append(i)
-        elif ertek!="":
-            szamok.append(int(ertek))
-            ertek=""
+        else:
+            szamok.append(i)
     return szamok, elojelek, hossz
 
 def hosszmeghatarozas(tömb):
@@ -25,15 +22,46 @@ def hosszmeghatarozas(tömb):
     ertek=""
     for i in t:
         i=i.strip()
-        if i!="":
-            ertek+=str(i)
-        elif ertek!="":
-            eredmenyek.append(int(ertek))
-            ertek=""
+        eredmenyek.append(i)
 
 
-    return len(eredmenyek)
+    return len(eredmenyek)-1
 
+
+def main(fajl):
+    eredmenyek=Beolvasa(fajl)
+    szamok=eredmenyek[0]
+    elojelek=eredmenyek[1]
+    hossz=eredmenyek[2]
+
+    print(Feladat(szamok, hossz, elojelek))
+
+def TeljesÖsszegMeghatarozas(hossz, alapszamok, elojelek, összeredmeny):
+    joszamok=[]
+    for i in range(hossz+1):
+        ertek=SzamMeghatarozas(alapszamok, hossz, i, elojelek)
+        if ertek!=None:
+            joszamok.append(ertek)
+        else:
+            összeredmeny+=összegMeghatarozas(elojelek[0], joszamok)
+            joszamok=[]
+            elojelek.pop(0)
+    
+    return elojelek, összeredmeny
+
+def Feladat(alapszamok, hossz, elojelek):
+    összeredmeny=0
+    ertekek=TeljesÖsszegMeghatarozas(hossz, alapszamok, elojelek, összeredmeny)
+    elojelek=ertekek[0]
+
+    return ertekek[1]
+
+def összegMeghatarozas(elojel, ertekek):
+    if elojel=="+":
+        return összeadas(ertekek)
+    else:
+        return szorzas(ertekek)
+    
 def összeadas(szamok):
     eredmeny=0
     for i in range(len(szamok)):
@@ -48,88 +76,31 @@ def szorzas(szamok):
 
     return eredmeny
 
-def allitasOsszeadas(elojel, joszamok, j, max, i):
-    return elojel=="+" and len(joszamok[j])>=max-i
-
-def allitasSzorzas(elojel, joszamok, j, i):
-    return elojel=="*" and len(joszamok[j])>i
-
-def hozzarendelesOsszeadas(joszamok, i, j, max):
-    return str(joszamok[j][max-1-i])
-
-def hozzarendelesSzorzas(joszamok, j, i):
-    return str(joszamok[j][len(joszamok[j])-1-i])
-
-def ertekekMeghatarozas(joszamok, elojel, i, ertekek, max):
+def szures(szamok):
     ertek=""
-    for j in range(len(joszamok)):
-        if allitasOsszeadas(elojel, joszamok, j, max, i):
-            ertek+=hozzarendelesOsszeadas(joszamok, i, j, max)
-        elif allitasSzorzas(elojel, joszamok, j, i):
-            ertek+=hozzarendelesSzorzas(joszamok, j, i)
-    if ertek!="":    
-        ertekek.append(int(ertek))
+    for i in range(len(szamok)):
+        if szamok[i]!="" and szamok[i]!=",":
+            ertek+=szamok[i]
+    if ertek!="":
+        return ertek
     
-    return ertekek
-
-def összegMeghatarozas(elojel, ertekek):
-    if elojel=="+":
-        return összeadas(ertekek)
-    else:
-        return szorzas(ertekek)
-
-def Kiszamolas(elojelek, oszlop, joszamok, max):
-    ertekek=[]
-    elojel=elojelek[len(elojelek)-1-oszlop]
-    for i in range(max):
-        ertekek=ertekekMeghatarozas(joszamok, elojel, i, ertekek, max)
-    print(ertekek)
-    
-    return összegMeghatarozas(elojel, ertekek)
-    
-def alapJoszam(alapszamok, hossz, joszamok, oszlop):
-    for i in range(len(alapszamok)//hossz):
-        joszamok.append(str(alapszamok[hossz-oszlop+i*hossz-1]))
-
-    return joszamok
-
 def SzamMeghatarozas(alapszamok, hossz, oszlop, elojelek):
-    összeredmeny=0
     joszamok=[]
     joszamok=alapJoszam(alapszamok, hossz, joszamok, oszlop)
-    max=maximum(joszamok)
-    összeredmeny=Kiszamolas(elojelek, oszlop, joszamok, max)
+    ertek=szures(joszamok)
+    if ertek!=None:
+        return int(ertek)
     
-    print(összeredmeny)
 
-    return összeredmeny
 
-def maximum(joszamok):
-    max=len(str(joszamok[0]))
-    for i in range(1, len(joszamok), 1):
-        if len(str(joszamok[i]))>max:
-            max=len(str(joszamok[i]))
+def alapJoszam(alapszamok, hossz, joszamok, oszlop):
+    for i in range(4):
+        if i>0:
+            joszamok.append(alapszamok[i*hossz+oszlop+i])
+        else:
+            joszamok.append(alapszamok[i*hossz+oszlop])
 
-    return max
-
-def Feladat(alapszamok, hossz, elojelek):
-    összeredmeny=0
-    for i in range(hossz):
-        összeredmeny+=SzamMeghatarozas(alapszamok, hossz, i, elojelek)
-        print(összeredmeny)
-    return összeredmeny
-
-def main(fajl):
-    eredmenyek=Beolvasa(fajl)
-    szamok=eredmenyek[0]
-    elojelek=eredmenyek[1]
-    hossz=eredmenyek[2]
-
-    print(Feladat(szamok, hossz, elojelek))
-    # print("hossz")
-    # print(hossz)
-    # print(len(elojelek))
-
+    return joszamok
 
 
 main("be.txt")
