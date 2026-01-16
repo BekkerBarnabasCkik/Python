@@ -28,18 +28,22 @@ def SMeghatarozas(tömb):
         i+=1
 
     return i
+def Valtozas(tömb, i, hossz):
+    if tömb[i+hossz]=="^":
+        if tömb[i+hossz-1]!="^":
+            tömb[i+hossz-1]="i"
+        if tömb[i+hossz+1]!="^":
+            tömb[i+hossz+1]="i"
+    else:
+        tömb[i+hossz]="i"
+
+    return tömb
 
 def Lepesek(Spoz, tömb, hossz):
     tömb[Spoz+hossz]="i"
     for i in range(hossz, len(tömb)-hossz, 1):
         if tömb[i]=="i":
-            if tömb[i+hossz]=="^":
-                if tömb[i+hossz-1]!="^":
-                    tömb[i+hossz-1]="i"
-                if tömb[i+hossz+1]!="^":
-                    tömb[i+hossz+1]="i"
-            else:
-                tömb[i+hossz]="i"
+            tömb=Valtozas(tömb, i, hossz)
     return tömb
 
 def kiiras(tömb, hossz):
