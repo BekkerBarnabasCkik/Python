@@ -30,20 +30,24 @@ def SMeghatarozas(tömb):
     return i
 
 def Lepesek(Spoz, tömb, hossz):
-    db=0
-    tömb[Spoz+hossz]="i"
+    tömb[Spoz+hossz]=1
     for i in range(hossz, len(tömb)-hossz, 1):
-        if tömb[i]=="i":
+        if tömb[i]!="." and tömb[i]!="^":
             if tömb[i+hossz]=="^":
-                if tömb[i+hossz-1]!="^":
-                    tömb[i+hossz-1]="i"
-                if tömb[i+hossz+1]!="^":
-                    tömb[i+hossz+1]="i"
-                db+=1
+                if tömb[i+hossz-1]!=".":
+                    tömb[i+hossz-1]=tömb[i+hossz-1]+tömb[i]
+                else:
+                    tömb[i+hossz-1]=tömb[i]
+                if tömb[i+hossz+1]!=".":
+                    tömb[i+hossz+1]=tömb[i+hossz+1]+tömb[i]
+                else:
+                    tömb[i+hossz+1]=tömb[i]
+            elif tömb[i+hossz]!=".":
+                tömb[i+hossz]=tömb[i+hossz]+tömb[i]
             else:
-                tömb[i+hossz]="i"
-    return db
-
+                tömb[i+hossz]=tömb[i]
+    
+    return tömb
 def kiiras(tömb, hossz):
     print(tömb[0], end="")
     for i in range(1, len(tömb), 1):
@@ -52,8 +56,23 @@ def kiiras(tömb, hossz):
         else:
             print(tömb[i], end="\n")
 
+def Megszamolas(tömb, hossz):
+    összes=0
+    for i in range(len(tömb)-1, len(tömb)-hossz-1, -1):
+        if tömb[i]!=".":
+            ertek=tömb[i]
+            print(ertek)
+            összes+=ertek
+    
+    return összes
+
+
 def feladat(hossz, tömb):
     Spoz=SMeghatarozas(tömb)
-    print(Lepesek(Spoz, tömb, hossz))
+    tömb=Lepesek(Spoz, tömb, hossz)
+
+    print(Megszamolas(tömb, hossz))
+
+
 
 main("be.txt")
