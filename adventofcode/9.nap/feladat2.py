@@ -42,3 +42,7 @@ x=ertekek[0]
 y=ertekek[1]
 Kivalasztas(x, y)
 
+
+# def eldonters(x1, x2, y1, y2):
+#     while 
+
