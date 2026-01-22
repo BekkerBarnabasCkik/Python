@@ -22,10 +22,11 @@ def fajlbeovlasas(fajlNev):
 
     return x, y 
 
-def tavolsag(x, y, i, j):
+def terulet(x, y, i, j):
     return (abs(x[j]-x[i])+1)*(abs(y[j]-y[i])+1)
 
 
+#----------------------------ChatGPT---------------------------
 
 # def eldonters(joy, jox, x, y):
 #     metszesek=0
@@ -45,66 +46,103 @@ def tavolsag(x, y, i, j):
 #     else:
 #         return False
 
-# def balFelso(jox, joy, x, y):
-#     return (jox>=x and joy<=y)
+#-------------------------ChatGPT-------------------------
 
-# def jobbFelso(jox, joy, x, y):
-#     return (jox<=x and joy<=y)
 
-# def balAlso(jox, joy, x, y):
-#     return (jox>=x and joy>=y)
 
-# def jobbAlso(jox, joy, x, y):
-#     return (jox<=x and joy>=y)
 
-# def Eldontes(jox, joy, x, y):
-#     egy=False
-#     ketto=False
-#     harom=False
-#     negy=False
-#     osszes=False
-#     i=0
-#     db=0
-#     while i<len(x) and osszes==False:
-#         if egy==False and balFelso(jox, joy, x[i], y[i]):
-#            egy=True
-#            db+=1
-#         if ketto==False and jobbFelso(jox, joy, x[i], y[i]):
-#             ketto=True
-#             db+=1
-#         if harom==False and balAlso(jox, joy, x[i], y[i]):
-#            harom=True
-#            db+=1
-#         if negy==False and jobbAlso(jox, joy, x[i], y[i]):
-#             negy=True
-#             db+=1
-#         if db==4:
-#             osszes=True
-#         i+=1
+#------------------Saját------------------------------------
+
+def balFelso(jox, joy, x, y):
+    return (jox>=x and joy<=y)
+
+def jobbFelso(jox, joy, x, y):
+    return (jox<=x and joy<=y)
+
+def balAlso(jox, joy, x, y):
+    return (jox>=x and joy>=y)
+
+def jobbAlso(jox, joy, x, y):
+    return (jox<=x and joy>=y)
+
+def BalFelsoVizsgalat(jox, joy, x, y, i, egy, db):
+    if egy==False and balFelso(jox, joy, x[i], y[i]):
+        egy=True
+        db+=1
+
+    return db, egy
+
+def JobbFelsoVizsgalat(jox, joy, x, y, i, ketto, db):
+    if ketto==False and jobbFelso(jox, joy, x[i], y[i]):
+        ketto=True
+        db+=1
+
+    return db, ketto
+
+def BalAlsoVizsgalat(jox, joy, x, y, i, harom, db):
+    if harom==False and balAlso(jox, joy, x[i], y[i]):
+        harom=True
+        db+=1
+
+    return db, harom
+
+def JobbAlsoVizsgalat(jox, joy, x, y, i, negy, db):
+    if negy==False and jobbAlso(jox, joy, x[i], y[i]):
+        negy=True
+        db+=1
+
+    return db, negy
+
+def Eldontes(jox, joy, x, y):
+    egy=False
+    ketto=False
+    harom=False
+    negy=False
+    osszes=False
+    i=0
+    db=0
+    while i<len(x) and osszes==False:
+        db, egy=BalFelsoVizsgalat(jox, joy, x, y, i, egy, db)
+        db, ketto=JobbFelsoVizsgalat(jox, joy, x, y, i, ketto, db)
+        db, harom=BalAlsoVizsgalat(jox, joy, x, y, i, harom, db)
+        db, negy=JobbAlsoVizsgalat(jox, joy, x, y, i, negy, db)
+        if db==4:
+            osszes=True
+        i+=1
     
-    # return osszes
+    return osszes
 
+def Feltetel(k, jox, joy, x, y):
+    return k<2 and Eldontes(jox[k], joy[len(joy)-(k+1)], x, y)
 
+def maxterEldontes(x, y, i, j, ter, maxter):
+    jox=[x[i], x[j]]
+    joy=[y[i], y[j]]
+    k=0
+    while Feltetel(k, jox, joy, x, y):
+        k+=1
+    if k==2:
+        return ter
+    else:
+        return maxter
+
+def Terulet(x, y, i, j, maxter):
+    ter=terulet(x, y, i, j)
+    if ter>maxter:
+        maxter=maxterEldontes(x, y, i, j, ter, maxter)
+
+    return maxter
 def Kivalasztas(x, y):
     maxter=0
     for i in range(len(x)):
         for j in range(i+1, len(x), 1):
-            ter=tavolsag(x, y, i, j)
-            if ter>maxter:
-                jox=[x[i], x[j]]
-                joy=[y[i], y[j]]
-                # k=0
-                # while k<2 and Eldontes(jox[k], joy[len(joy)-(k+1)], x, y):
-                #     k+=1
-                # if k==2:
-                #     maxter=ter
-                #     print(maxter)
+            maxter=Terulet(x, y, i, j, maxter)
                     
     print(maxter)
 
 
 
-ertekek=fajlbeovlasas("be.txt")
+ertekek=fajlbeovlasas("proba.txt")
 x=ertekek[0]
 y=ertekek[1]
 Kivalasztas(x, y)
