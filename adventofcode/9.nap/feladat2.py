@@ -22,8 +22,8 @@ def fajlbeovlasas(fajlNev):
 
     return x, y 
 
-def terulet(x, y, i, j):
-    return (abs(x[j]-x[i])+1)*(abs(y[j]-y[i])+1)
+# def terulet(x, y, i, j):
+#     return (abs(x[j]-x[i])+1)*(abs(y[j]-y[i])+1)
 
 
 #----------------------------ChatGPT---------------------------
@@ -204,44 +204,128 @@ def terulet(x, y, i, j):
 # y=ertekek[1]
 # Kivalasztas(x, y)
 
-def Eldontes(jox, joy, x, y):
+# def Eldontes(jox, joy, x, y):
+#     metszes=0
+#     for i in range(len(x)):
+#         Ay=y[i]
+#         Ax=x[i]
+#         By=y[(i+1)%len(y)]
+#         Bx=x[(i+1)%len(x)]
+#         if (Ay>joy) != (By>joy):
+#             x_metszes=Ax + (joy - Ay) * (Bx - Ax) / (By - Ay)
+#             if x_metszes>jox:
+#                 metszes+=1
+            
+#     if metszes%2!=0:
+#         return True
+#     else:
+#         return False
+
+# def MaxterMeghatarozas(x, y, i, j, maxter):
+#     bent = Eldontes(x[i], y[i], x, y) and Eldontes(x[j], y[j], x, y)
+
+#     if bent:
+#         return TeruletMeghatarozas(x, y, i, j)
+#     else:
+#         return maxter
+
+
+
+
+# def TeruletMeghatarozas(x, y, i, j):
+#     return abs(x[i]-x[j])*abs(y[i]-y[j])
+
+# def Feladat(x, y):
+#     maxter=0
+#     for i in range(len(x)):
+#         for j in range(i+1, len(x), 1):
+#             if TeruletMeghatarozas(x, y, i, j)>maxter:
+#                 maxter=MaxterMeghatarozas(x, y, i, j, maxter)
+#     print(maxter)
+
+# def main():
+#     x, y=fajlbeovlasas("proba.txt")
+#     Feladat(x, y)
+
+# main()
+
+
+#-------------------------------------------- uj proba--------------------------------
+
+# def tomegkkozeppont(x, y):
+#     osszes=0
+#     for i in range(len(x)):
+#         osszes+=x[i]
+#         osszes+=y[i]
+
+#     return osszes/((len(x)-1)*2)
+
+# def szog(x, y):
+#     return math.atan2()
+
+# def terulet(x, y, i, j):
+#     return (abs(x[i]-x[j])*abs(y[i]-y[j]))
+
+# def TerEldontes(x, y, i, j, maxter):
+#     ter=terulet(x, y, i, j)
+#     print(ter, maxter)
+#     if ter>maxter:
+#         maxter=maxterEldontes(x, y, i, j, ter, maxter)
+
+
+# def Kivalasztas(x, y):
+#     maxter=0
+#     for i in range(len(x)):
+#         for j in range(i+1, len(x), 1):
+            
+#     print(maxter)
+
+def Terulet(x, y, i, j):
+    return abs(x[i]-x[j])*abs(y[i]-y[j])
+
+
+def kozrefogas(Ay, By, joy):
+    return (Ay>joy) != (By>joy)
+
+def x_metszes(joy, Ay, By, Bx, Ax):
+    return ((Bx-Ax)*(joy-Ay))/(By-Ay)+1
+
+
+def eldontes(jox, joy, x, y):
     metszes=0
+    db=0
+    feltetel=False
     for i in range(len(x)):
         Ay=y[i]
         Ax=x[i]
         By=y[(i+1)%len(y)]
         Bx=x[(i+1)%len(x)]
-        if (Ay>joy) != (By>joy):
-            x_metszes=Ax + (joy - Ay) * (Bx - Ax) / (By - Ay)
-            if x_metszes>jox:
-                metszes+=1
-            
-    if metszes%2!=0:
-        return True
-    else:
-        return False
-
-def MaxterMeghatarozas(x, y, i, j, maxter):
-    bent = Eldontes(x[i], y[i], x, y) and Eldontes(x[j], y[j], x, y)
-
-    if bent:
-        return TeruletMeghatarozas(x, y, i, j)
-    else:
-        return maxter
-
-
-
-
-def TeruletMeghatarozas(x, y, i, j):
-    return abs(x[i]-x[j])*abs(y[i]-y[j])
+        for k in range(2):
+            if kozrefogas(Ay, By, joy[k]):
+                if jox<x_metszes(joy[k], Ay, By, Bx, Ax):
+                    if x_metszes>jox:
+                        db+=1
+            if db%2!=0 and feltetel==False:
+                feltetel=True
+            else:
+                feltetel=False
+    
+    return feltetel
+        
 
 def Feladat(x, y):
     maxter=0
     for i in range(len(x)):
         for j in range(i+1, len(x), 1):
-            if TeruletMeghatarozas(x, y, i, j)>maxter:
-                maxter=MaxterMeghatarozas(x, y, i, j, maxter)
+            if Terulet(x, y, i, j)>maxter:
+                jox=[x[i], x[j]]
+                joy=[y[j], y[i]]
+                if eldontes(jox, joy, x, y):
+                    maxter=Terulet(x, y, i, j)
+    
     print(maxter)
+
+
 
 def main():
     x, y=fajlbeovlasas("proba.txt")
