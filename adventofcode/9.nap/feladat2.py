@@ -288,29 +288,28 @@ def kozrefogas(Ay, By, joy):
     return (Ay>joy) != (By>joy)
 
 def x_metszes(joy, Ay, By, Bx, Ax):
-    return ((Bx-Ax)*(joy-Ay))/(By-Ay)+1
+    return ((Bx-Ax)*(joy-Ay))/(By-Ay)+Ax
 
+def vizsgalat(Ay, By, joy, jox, Bx, Ax, metszes):
+    if kozrefogas(Ay, By, joy):
+        if jox<x_metszes(joy, Ay, By, Bx, Ax):
+            metszes+=1
+
+    return metszes
 
 def eldontes(jox, joy, x, y):
     metszes=0
-    db=0
-    feltetel=False
     for i in range(len(x)):
         Ay=y[i]
         Ax=x[i]
         By=y[(i+1)%len(y)]
         Bx=x[(i+1)%len(x)]
-        for k in range(2):
-            if kozrefogas(Ay, By, joy[k]):
-                if jox<x_metszes(joy[k], Ay, By, Bx, Ax):
-                    if x_metszes>jox:
-                        db+=1
-            if db%2!=0 and feltetel==False:
-                feltetel=True
-            else:
-                feltetel=False
-    
-    return feltetel
+        metszes=vizsgalat(Ay, By, joy, jox, Bx, Ax, metszes)
+
+        if metszes%2!=0:
+            return True
+        else:
+            return False
         
 
 def Feladat(x, y):
@@ -320,8 +319,11 @@ def Feladat(x, y):
             if Terulet(x, y, i, j)>maxter:
                 jox=[x[i], x[j]]
                 joy=[y[j], y[i]]
-                if eldontes(jox, joy, x, y):
-                    maxter=Terulet(x, y, i, j)
+                for k in range(2):
+                    if not eldontes(jox[k], joy[k], x, y):
+                        print(x[i], x[j], y[i], y[j])
+                        maxter=Terulet(x, y, i, j)
+                        print(maxter)
     
     print(maxter)
 
