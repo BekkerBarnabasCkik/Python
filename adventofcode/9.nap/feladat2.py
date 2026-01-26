@@ -304,12 +304,10 @@ def eldontes(jox, joy, x, y):
         Ax=x[i]
         By=y[(i+1)%len(y)]
         Bx=x[(i+1)%len(x)]
-        metszes=vizsgalat(Ay, By, joy, jox, Bx, Ax, metszes)
+        metszes =vizsgalat(Ay, By, joy, jox, Bx, Ax, metszes)
+    print(metszes)
 
-        if metszes%2!=0:
-            return True
-        else:
-            return False
+    return metszes%2!=0
         
 
 def Feladat(x, y):
@@ -319,11 +317,15 @@ def Feladat(x, y):
             if Terulet(x, y, i, j)>maxter:
                 jox=[x[i], x[j]]
                 joy=[y[j], y[i]]
+                jo=True
                 for k in range(2):
                     if not eldontes(jox[k], joy[k], x, y):
-                        print(x[i], x[j], y[i], y[j])
-                        maxter=Terulet(x, y, i, j)
-                        print(maxter)
+                        jo = False
+                        print("test")
+
+                if jo:
+                    maxter = Terulet(x, y, i, j)
+                    print("Új max:", maxter)
     
     print(maxter)
 
