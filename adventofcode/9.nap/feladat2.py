@@ -53,14 +53,25 @@ def Terulet(x, y, i, j):
 def Feltetel(jox, joy, Bx, Ax, Ay, By):
     return jox<((Bx-Ax)*(joy-Ay)/(By-Ay)+Ax) and joy!=Ay and joy!=By and jox!=Ax and jox!=Bx
 
+def BenneVan(jox, joy, x, y):
+    i=0
+    feltetel=False
+    while i<len(x) and feltetel==False:
+        if x[i]==jox and y[i]==joy:
+            feltetel=True
+        i+=1
+
+    return feltetel
+
 def Feladat(x, y):
     maxter=0
-    for i in range(len(x)):
+    for i in range(0, len(x)):
         for j in range(i+1, len(x), 1):
             jox=[x[i], x[j]]
             joy=[y[j], y[i]]
-            if Eldontes(jox[0], joy[0], x, y) and Eldontes(jox[1], joy[1], x, y):
+            if (Eldontes(jox[0], joy[0], x, y) or BenneVan(jox[0], joy[0], x, y)) and (Eldontes(jox[1], joy[1], x, y) or BenneVan(jox[1], joy[1], x, y)):
                 ter=Terulet(x, y, i, j)
+                # print(ter)
                 # print(x[i], y[i], x[j], y[j])
                 if ter>maxter:
                     maxter=ter
@@ -71,7 +82,7 @@ def Feladat(x, y):
 
 
 def main():
-    x, y=fajlbeovlasas("proba.txt")
+    x, y=fajlbeovlasas("be.txt")
     Feladat(x, y)
 
 main()
