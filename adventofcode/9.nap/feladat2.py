@@ -33,7 +33,7 @@ def Eldontes(jox, joy, x, y):
         Ax=x[i]
         By=y[(i+1)%len(y)]
         Bx=x[(i+1)%len(x)]
-        if (Ay>joy) != (By>joy) and Feltetel(jox, joy, Bx, Ax, Ay, By):
+        if ((Ay>joy) != (By>joy) and Feltetel(jox, joy, Bx, Ax, Ay, By)) or (((Ax>jox) != (Bx>jox)) and (Ay==joy and By==joy)):
             # j=0
             # feltetel=False
             # while j<len(x) and feltetel==False:
@@ -51,7 +51,7 @@ def Terulet(x, y, i, j):
     return (abs(x[i]-x[j])+1)*(abs(y[i]-y[j])+1)
 
 def Feltetel(jox, joy, Bx, Ax, Ay, By):
-    return jox<((Bx-Ax)*(joy-Ay)/(By-Ay)+Ax) and joy!=Ay and joy!=By and jox!=Ax and jox!=Bx
+    return jox<=((Bx-Ax)*(joy-Ay)/(By-Ay)+Ax) and joy!=Ay and joy!=By and jox!=Ax and jox!=Bx
 
 def BenneVan(jox, joy, x, y):
     i=0
@@ -63,22 +63,43 @@ def BenneVan(jox, joy, x, y):
 
     return feltetel
 
+# def magassag(y, joy):
+
+
+def rajtaVan(jox, joy, x, y):
+    Ax=x[i]
+    Bx=x[(i+1)%len(x)]
+    if (Ax>jox) != (Bx>jox):
+        # j=0
+        # feltetel=False
+        # while j<len(x) and feltetel==False:
+        #     if x[j]!=joy:
+        #         j+=1
+        #     else:
+        #         feltetel=True
+        # if feltetel==True:
+        # jo=True
+        db+=1
+    i+=1
+
 def Feladat(x, y):
     maxter=0
+    db=0
     for i in range(0, len(x)):
         for j in range(i+1, len(x), 1):
             jox=[x[i], x[j]]
             joy=[y[j], y[i]]
             if (Eldontes(jox[0], joy[0], x, y) or BenneVan(jox[0], joy[0], x, y)) and (Eldontes(jox[1], joy[1], x, y) or BenneVan(jox[1], joy[1], x, y)):
+                # print(x[i], y[i], x[j], y[j])
                 ter=Terulet(x, y, i, j)
                 # print(ter)
-                # print(x[i], y[i], x[j], y[j])
+                db+=1
                 if ter>maxter:
                     maxter=ter
                     # print(maxter)
 
     print(maxter)
-
+    print(db)
 
 
 def main():
