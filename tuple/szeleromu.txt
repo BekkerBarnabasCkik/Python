@@ -42,5 +42,3 @@ Ostffyasszonyfa;Vas;Nyugat-Dunántúl;1;600;2006
 Vönöck;Vas;Nyugat-Dunántúl;1;850;2008
 Ikervár;Vas;Nyugat-Dunántúl;4;2000;2011
 Ikervár;Vas;Nyugat-Dunántúl;13;2000;2011
-
-2009

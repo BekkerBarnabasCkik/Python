@@ -71,8 +71,25 @@ def maximumkivalasztas(darabok):
     
     return maxi
 
-def megyekMegszamolas(megyek, evek, t):
+def leghozsabbmegye(megyek):
+    maxi=0
     for i in range(len(megyek)):
+        if len(megyek[i])>len(megyek[maxi]):
+            maxi=i
+    
+    return len(megyek[maxi])
+
+def megyeKiiras(megye, leghoszabb):
+    print(megye, end="")
+    for i in range(leghoszabb-len(megye)):
+        print(" ", end="")
+
+
+
+def megyekMegszamolas(megyek, evek, t):
+    maxhossz=leghozsabbmegye(megyek)
+    for i in range(len(megyek)):
+        megyeKiiras(megyek[i], maxhossz)
         for j in range(len(evek)):
             db=kereses_szamlalas(megyek[i], evek[j], t)
             if db>0:
