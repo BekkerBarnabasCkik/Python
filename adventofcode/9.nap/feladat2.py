@@ -34,15 +34,6 @@ def Eldontes(jox, joy, x, y):
         By=y[(i+1)%len(y)]
         Bx=x[(i+1)%len(x)]
         if ((Ay>joy) != (By>joy) and Feltetel(jox, joy, Bx, Ax, Ay, By)) or (((Ax>jox) != (Bx>jox)) and (Ay==joy and By==joy)):
-            # j=0
-            # feltetel=False
-            # while j<len(x) and feltetel==False:
-            #     if x[j]!=joy:
-            #         j+=1
-            #     else:
-            #         feltetel=True
-            # if feltetel==True:
-            # jo=True
             db+=1
         i+=1
     return (db%2)!=0
@@ -70,15 +61,6 @@ def rajtaVan(jox, joy, x, y):
     Ax=x[i]
     Bx=x[(i+1)%len(x)]
     if (Ax>jox) != (Bx>jox):
-        # j=0
-        # feltetel=False
-        # while j<len(x) and feltetel==False:
-        #     if x[j]!=joy:
-        #         j+=1
-        #     else:
-        #         feltetel=True
-        # if feltetel==True:
-        # jo=True
         db+=1
     i+=1
 
