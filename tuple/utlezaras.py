@@ -87,12 +87,6 @@ def elozes(t):
                 db+=1
             j+=1
         
-
-# for j in range(i+1, len(t)):
-#             masmperc=mpercszamitas(t, j)
-#             if masmperc<mperc and t[i][4]==t[j][4]:
-#                 db+=1
-    
     return db
 
 def Sorrend(t):
