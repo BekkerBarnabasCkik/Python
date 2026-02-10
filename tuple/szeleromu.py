@@ -84,8 +84,6 @@ def megyeKiiras(megye, leghoszabb):
     for i in range(leghoszabb-len(megye)):
         print(" ", end="")
 
-
-
 def megyekMegszamolas(megyek, evek, t):
     maxhossz=leghozsabbmegye(megyek)
     for i in range(len(megyek)):
@@ -107,6 +105,17 @@ def kereses_szamlalas(jomegye, joev, t):
     
     return osszes
 
+def KivalogatEgyedi(t):
+    ki=[]
+    for i in range(len(t)):
+        j=0
+        while j<len(ki) and ki[j]!=t[i][0]:
+            j+=1
+        if j==len(ki):
+            ki.append(t[i][0])
+    
+    return ki
+
 
 def main():
     n=int(input())
@@ -124,4 +133,7 @@ def main():
     megyek=ev_megyeMeghatarozas(t, 1)
     print(megyek)
     megyekMegszamolas(megyek, evek, t)
+    Varosok=KivalogatEgyedi(t)
+    print(Varosok)
+    
 main()
