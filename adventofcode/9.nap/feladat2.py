@@ -33,6 +33,7 @@ def Eldontes(jox, joy, x, y):
         Ax=x[i]
         By=y[(i+1)%len(y)]
         Bx=x[(i+1)%len(x)]
+<<<<<<< HEAD
         if ((Ay>joy) != (By>joy) and Feltetel(jox, joy, Bx, Ax, Ay, By)) or ((Ax>jox) != (Bx>jox) and Ay==joy and By==joy):
             # j=0
             # feltetel=False
@@ -43,6 +44,9 @@ def Eldontes(jox, joy, x, y):
             #         feltetel=True
             # if feltetel==True:
             # jo=True
+=======
+        if ((Ay>joy) != (By>joy) and Feltetel(jox, joy, Bx, Ax, Ay, By)) or (((Ax>jox) != (Bx>jox)) and (Ay==joy and By==joy)):
+>>>>>>> 7d496e4252d6e0162fb6fd78da68c3e2081e9be2
             db+=1
         i+=1
     return (db%2)!=0
@@ -51,7 +55,11 @@ def Terulet(x, y, i, j):
     return (abs(x[i]-x[j])+1)*(abs(y[i]-y[j])+1)
 
 def Feltetel(jox, joy, Bx, Ax, Ay, By):
+<<<<<<< HEAD
     return jox<((Bx-Ax)*(joy-Ay)/(By-Ay)+Ax) and joy!=Ay and joy!=By and jox!=Ax and jox!=Bx
+=======
+    return jox<=((Bx-Ax)*(joy-Ay)/(By-Ay)+Ax) and joy!=Ay and joy!=By and jox!=Ax and jox!=Bx
+>>>>>>> 7d496e4252d6e0162fb6fd78da68c3e2081e9be2
 
 def BenneVan(jox, joy, x, y):
     i=0
@@ -70,6 +78,7 @@ def rajtaVan(jox, joy, x, y):
     Ax=x[i]
     Bx=x[(i+1)%len(x)]
     if (Ax>jox) != (Bx>jox):
+<<<<<<< HEAD
         # j=0
         # feltetel=False
         # while j<len(x) and feltetel==False:
@@ -79,11 +88,14 @@ def rajtaVan(jox, joy, x, y):
         #         feltetel=True
         # if feltetel==True:
         # jo=True
+=======
+>>>>>>> 7d496e4252d6e0162fb6fd78da68c3e2081e9be2
         db+=1
     i+=1
 
 def Feladat(x, y):
     maxter=0
+<<<<<<< HEAD
     ter=0
     for i in range(1, len(x)):
         for j in range(3, len(x), 1):
@@ -93,16 +105,28 @@ def Feladat(x, y):
                 print(x[i], y[i], x[j], y[j])
                 ter=Terulet(x, y, i, j)
                 print(ter)
+=======
+    db=0
+    for i in range(0, len(x)):
+        for j in range(i+1, len(x), 1):
+            jox=[x[i], x[j]]
+            joy=[y[j], y[i]]
+            if (Eldontes(jox[0], joy[0], x, y) or BenneVan(jox[0], joy[0], x, y)) and (Eldontes(jox[1], joy[1], x, y) or BenneVan(jox[1], joy[1], x, y)):
+                # print(x[i], y[i], x[j], y[j])
+                ter=Terulet(x, y, i, j)
+                # print(ter)
+                db+=1
+>>>>>>> 7d496e4252d6e0162fb6fd78da68c3e2081e9be2
                 if ter>maxter:
                     maxter=ter
                     # print(maxter)
 
     print(maxter)
-
+    print(db)
 
 
 def main():
-    x, y=fajlbeovlasas("proba.txt")
+    x, y=fajlbeovlasas("be.txt")
     Feladat(x, y)
 
 main()
