@@ -32,19 +32,15 @@ def Kereses(mit, miben, hanyadik):
             hely=i
     return hely
 
-# def Eldontes(keresett, megkeresettek, keresendo):
-#     eldontes=True
-#     i=0
-#     while i<len(keresendo) and eldontes:
-#         if i<len(keresendo):
-#             if keresendo[i]==keresett:  
-#                 eldontes=False
-        
-#         i+=1
+def megnezes(adatok, keresett, megkeresettek, keresendo):
+    kimenetek=adatok[Kereses(keresett, adatok, 0)][1]
+    for i in range(len(kimenetek)):
+        if kimenetek[i]!="out":
+            keresendo.append(kimenetek[i])
     
-#     return eldontes
+    return keresendo
 
-def megnezes(adatok, keresett, megkeresettek, keresendo, db):
+def megnezesdb(adatok, keresett, megkeresettek, keresendo, db):
     kimenetek=adatok[Kereses(keresett, adatok, 0)][1]
     for i in range(len(kimenetek)):
         if kimenetek[i]!="out":
@@ -54,17 +50,53 @@ def megnezes(adatok, keresett, megkeresettek, keresendo, db):
     
     return keresendo, db
 
+def vegigmanes2(adatok, mibol):
+    keresendo=[]
+    keresett=""
+    megkeresett=[]
+    db=0
+    keresendo=adatok[Kereses(mibol, adatok, 0)][1]
+    print(keresendo)
+    while len(keresendo)!=0:
+        keresett=keresendo[0]
+        keresendo.pop(0)
+        keresendo, db=megnezesdb(adatok, keresett, megkeresett, keresendo, db)
+        print("vegigmenes2")
+
+    return db
+
+def vegigmanes(adatok, mit, mibol):
+    keresendo=[]
+    keresett=""
+    megkeresett=[]
+    db=0
+    keresendo=adatok[Kereses(mibol, adatok, 0)][1]
+    print(keresendo)
+    while len(keresendo)!=0:
+        keresett=keresendo[0]
+        keresendo.pop(0)
+        if keresett==mit:
+            db=vegigmanes2(adatok, mit)
+        keresendo=megnezes(adatok, keresett, megkeresett, keresendo)
+        print("vegigmenes1")
+
+    return db
+
 def Feladat(adatok):
     keresendo=[]
     keresett=""
     megkeresett=[]
     db=0
-    keresendo=adatok[Kereses("you", adatok, 0)][1]
+    keresendo=adatok[Kereses("svr", adatok, 0)][1]
     print(keresendo)
     while len(keresendo)!=0:
         keresett=keresendo[0]
         keresendo.pop(0)
-        keresendo, db=megnezes(adatok, keresett, megkeresett, keresendo, db)
+        if keresett=="dac":
+            db+=vegigmanes(adatok, "fft", "dac")
+        elif keresett=="fft":
+            db+=vegigmanes(adatok, "dac", "fft")
+        keresendo,_=megnezesdb(adatok, keresett, megkeresett, keresendo, db)
 
     return db
 
