@@ -53,9 +53,6 @@ def megnezes(adatok, keresett, megkeresettek, keresendo, db):
             db+=1
     
     return keresendo, db
-    
-
-
 
 def Feladat(adatok):
     keresendo=[]
