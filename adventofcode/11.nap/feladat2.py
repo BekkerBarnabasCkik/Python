@@ -40,10 +40,18 @@ def megnezes(adatok, keresett, megkeresettek, keresendo):
     
     return keresendo
 
+def BenneVan(honnan, hova, eddigig_utak):
+    i=0
+    while i<len(eddigig_utak) and eddigig_utak[i][0]!=honnan and eddigig_utak[i][1]!=hova:
+        i+=1
+    
+    return i==len(eddigig_utak)
+
 def megnezesdb(adatok, keresett, megkeresettek, keresendo, db):
     kimenetek=adatok[Kereses(keresett, adatok, 0)][1]
     for i in range(len(kimenetek)):
         if kimenetek[i]!="out":
+            # if BenneVan(kimenetek[i], )
             keresendo.append(kimenetek[i])
         elif kimenetek[i]=="out":
             db+=1
@@ -61,7 +69,8 @@ def vegigmanes2(adatok, mibol):
         keresett=keresendo[0]
         keresendo.pop(0)
         keresendo, db=megnezesdb(adatok, keresett, megkeresett, keresendo, db)
-        print("vegigmenes2")
+        print(2)
+        # print(keresendo)
 
     return db
 
@@ -78,8 +87,7 @@ def vegigmanes(adatok, mit, mibol):
         if keresett==mit:
             db=vegigmanes2(adatok, mit)
         keresendo=megnezes(adatok, keresett, megkeresett, keresendo)
-        print("vegigmenes1")
-
+        # print(keresendo)
     return db
 
 def Feladat(adatok):

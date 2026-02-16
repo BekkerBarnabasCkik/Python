@@ -32,18 +32,6 @@ def Kereses(mit, miben, hanyadik):
             hely=i
     return hely
 
-# def Eldontes(keresett, megkeresettek, keresendo):
-#     eldontes=True
-#     i=0
-#     while i<len(keresendo) and eldontes:
-#         if i<len(keresendo):
-#             if keresendo[i]==keresett:  
-#                 eldontes=False
-        
-#         i+=1
-    
-#     return eldontes
-
 def megnezes(adatok, keresett, megkeresettek, keresendo, db):
     kimenetek=adatok[Kereses(keresett, adatok, 0)][1]
     for i in range(len(kimenetek)):
@@ -75,4 +63,4 @@ def main(fajl):
     adatok=fajlbeolvasas(fajl)
     print(Feladat(adatok))
 
-main("be.txt")
+main("proba.txt")
