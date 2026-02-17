@@ -11,6 +11,7 @@ def Hova(adat):
 
 def SorBeolvasas(sor):
     adottSor=[]
+    
     adottSor.append(Honnan(sor))
     adottSor.append(Hova(sor))
 
@@ -20,96 +21,69 @@ def fajlbeolvasas(fajl):
     f=open(fajl)
     t=f.readlines()
     f.close()
-    adatok=[]
+    adatok={}
     for i in t:
-        adatok.append((SorBeolvasas(i)))
+        t=SorBeolvasas(i)
+        adatok[t[0]]=t[1]
     
     return adatok
 
-def Kereses(mit, miben, hanyadik):
-    for i in range(len(miben)):
-        if mit==miben[i][hanyadik]:
-            hely=i
-    return hely
-
-def megnezes(adatok, keresett, megkeresettek, keresendo):
-    kimenetek=adatok[Kereses(keresett, adatok, 0)][1]
+def megnezes(adatok, keresett, keresendo, db, tiltott, hova):
+    kimenetek=adatok[keresett]
+    print(adatok)
     for i in range(len(kimenetek)):
-        if kimenetek[i]!="out":
+        if kimenetek[i]!=hova and kimenetek[i]!=tiltott and kimenetek[i]!="out" and kimenetek[i]!=" ":
             keresendo.append(kimenetek[i])
-    
-    return keresendo
-
-def BenneVan(honnan, hova, eddigig_utak):
-    i=0
-    while i<len(eddigig_utak) and eddigig_utak[i][0]!=honnan and eddigig_utak[i][1]!=hova:
-        i+=1
-    
-    return i==len(eddigig_utak)
-
-def megnezesdb(adatok, keresett, megkeresettek, keresendo, db):
-    kimenetek=adatok[Kereses(keresett, adatok, 0)][1]
-    for i in range(len(kimenetek)):
-        if kimenetek[i]!="out":
-            # if BenneVan(kimenetek[i], )
-            keresendo.append(kimenetek[i])
-        elif kimenetek[i]=="out":
+        elif kimenetek[i]==hova:
             db+=1
+            print(db)
     
     return keresendo, db
-
-def vegigmanes2(adatok, mibol):
+    
+def vegigmenes(adatok, kiindulas, tiltott, hova, regidarab):
     keresendo=[]
-    keresett=""
-    megkeresett=[]
     db=0
-    keresendo=adatok[Kereses(mibol, adatok, 0)][1]
-    print(keresendo)
+    keresendo=adatok[kiindulas]
+    adatok.pop(kiindulas)
     while len(keresendo)!=0:
         keresett=keresendo[0]
         keresendo.pop(0)
-        keresendo, db=megnezesdb(adatok, keresett, megkeresett, keresendo, db)
-        print(2)
-        # print(keresendo)
+        keresendo, db=megnezes(adatok, keresett, keresendo, db, tiltott, hova)
+        print(len(keresendo))
+    
+    if regidarab>db:
+        return regidarab
+    else:
+        return db
+
+def lehetoseg1(adatok):
+    db=0
+    db=vegigmenes(adatok, "svr", "dac", "fft", db)
+    print(db)
+    db=vegigmenes(adatok, "fft", "out", "dac", db)
+    print(db)
+    db=vegigmenes(adatok, "dac", "fft", "out", db)
 
     return db
 
-def vegigmanes(adatok, mit, mibol):
-    keresendo=[]
-    keresett=""
-    megkeresett=[]
+def lehetoseg2(adatok):
     db=0
-    keresendo=adatok[Kereses(mibol, adatok, 0)][1]
-    print(keresendo)
-    while len(keresendo)!=0:
-        keresett=keresendo[0]
-        keresendo.pop(0)
-        if keresett==mit:
-            db=vegigmanes2(adatok, mit)
-        keresendo=megnezes(adatok, keresett, megkeresett, keresendo)
-        # print(keresendo)
+    db=vegigmenes(adatok, "svr", "fft", "dac", db)
+    db=vegigmenes(adatok, "dac", "", "fft", db)
+    db=vegigmenes(adatok, "fft", "dac", "out", db)
+
     return db
 
-def Feladat(adatok):
-    keresendo=[]
-    keresett=""
-    megkeresett=[]
+def Feladat(adatok, fajl):
     db=0
-    keresendo=adatok[Kereses("svr", adatok, 0)][1]
-    print(keresendo)
-    while len(keresendo)!=0:
-        keresett=keresendo[0]
-        keresendo.pop(0)
-        if keresett=="dac":
-            db+=vegigmanes(adatok, "fft", "dac")
-        elif keresett=="fft":
-            db+=vegigmanes(adatok, "dac", "fft")
-        keresendo,_=megnezesdb(adatok, keresett, megkeresett, keresendo, db)
+    # for i in range(2):
+    db+=lehetoseg1(adatok)
+    # db+=lehetoseg2(fajlbeolvasas(fajl))
 
     return db
 
 def main(fajl):
     adatok=fajlbeolvasas(fajl)
-    print(Feladat(adatok))
+    print(Feladat(adatok, fajl))
 
-main("be.txt")
+main("proba.txt")
