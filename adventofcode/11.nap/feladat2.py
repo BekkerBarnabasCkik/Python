@@ -186,7 +186,7 @@ def vegigmenes(adatok, kiindulas, tiltott, hova, regidarab):
     keresendo=[]
     megkeresettek=[]
     db=0
-    utvonalakSzama=[1]
+    utvonalakSzama=[]
     keresendo=adatok[kiindulas]
     adatok.pop(kiindulas)
     while len(keresendo)!=0:
@@ -199,7 +199,7 @@ def vegigmenes(adatok, kiindulas, tiltott, hova, regidarab):
         return 0
 
 def lehetoseg1(adatok):
-    db=0
+    db=1
     db+=vegigmenes(adatok, "svr", "dac", "fft", db)
     print(db)
     db+=vegigmenes(adatok, "fft", "out", "dac", db)
