@@ -1,0 +1,14 @@
+#adó perc mp előadó:számcím
+#1. olvassátok be
+#2. írjátok ki
+#3. renezzétek zene hossza szerint csökkenően (ecsr)
+#4. rendezzétek adó szerint növekvően (mkr)
+#5. átlagosan milyen hosszúak az egyes adókon a zeneszámok
+#(használjátok ki a 4. feladat rendezését)
+#6. Ha a műsorblokk 1 órás, írjuk ki, hogy az egyes adókon
+#milyen zenét játszanak.
+#(használjátok ki a 3. feladat rendezését)
+#7. Az új 4-es adó, az első 3 adótól vesszi át az 1 órás 
+#blokkra a zeneszámokat úgy, hogy mindig a leghosszabb 
+#zeneszámot veszi át. Mik a számok?
+
