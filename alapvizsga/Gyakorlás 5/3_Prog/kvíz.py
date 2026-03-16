@@ -13,7 +13,7 @@ def eldont(adat,sorszam):
         print("Helytelen válasz")
 
 #Kérjen be a felhasználótól egy 1 és 6 közé esö számot!
-
+szam=int(input())
 
 
 #Jelenitse meg a kész függvény, eljárás segitségével a sorszámnak megfelelö kérdést

@@ -45,10 +45,10 @@ def UtvonalakNoveles(keresendo, kimenet, utvonalakszama):
     
     return utvonalakszama
 
-def Megszmolas_Hozzafuzes(kimenetek, i, hova, tiltott, megkeresettek, keresendo, keresett, db, utvonalakszama):
+def Megszmolas_Hozzafuzes(kimenetek, i, hova, tiltott, megkeresettek, keresendo, keresett, db, utvonalakSzama):
     if kimenetek[i]!=hova and kimenetek[i]!=tiltott and kimenetek[i]!="out" and kimenetek[i]!=" ":
+        # utvonalakSzama=UtvonalakNoveles(keresendo, kimenetek[i], utvonalakSzama)
         megkeresettek.append((keresett, kimenetek[i]))
-        utvonalakSzama=UtvonalakNoveles(keresendo, kimenetek[i], utvonalakszama)
         keresendo.append(kimenetek[i])
     elif kimenetek[i]==hova:
         db+=1
@@ -90,15 +90,15 @@ def lehetoseg1(adatok):
     db+=vegigmenes(adatok, "dac", "fft", "out", db)
     print(db)
 
-    return db
+#     return db
 
-def lehetoseg2(adatok):
-    db=0
-    db=vegigmenes(adatok, "svr", "fft", "dac", db)
-    db=vegigmenes(adatok, "dac", "", "fft", db)
-    db=vegigmenes(adatok, "fft", "dac", "out", db)
+# def lehetoseg2(adatok):
+#     db=0
+#     db=vegigmenes(adatok, "svr", "fft", "dac", db)
+#     db=vegigmenes(adatok, "dac", "", "fft", db)
+#     db=vegigmenes(adatok, "fft", "dac", "out", db)
 
-    return db
+#     return db
 
 def Feladat(adatok, fajl):
     db=0
