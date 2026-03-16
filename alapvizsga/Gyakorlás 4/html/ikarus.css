@@ -1,12 +1,27 @@
 body{
     color: black;
+    background-image: url(ikarus_hatter.jpg);
+    color: #1502CE;
+    font-size: 120%;
 }
 
-ul{
+ul li{
     color: Navy;
     font-style: italic;
 }
 
 .sorkizart{
-    
+    margin: 0px, 20px, 0px, 15px;
+    border: 1px, solid, #C24A0E;
 }
+
+.tabla{
+    border: 1px, solid, black;
+    border-radius: 10px;
+}
+
+h1, h2{
+    text-shadow: 1px, gray;
+    font-variant: small-caps ;
+}
+

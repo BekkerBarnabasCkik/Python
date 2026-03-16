@@ -1,5 +1,7 @@
 body{
   padding: 15px;
+  background-color: #E7E7FF;
+  color: #1D1D4E;
 }
 
 h1{
@@ -15,6 +17,7 @@ p{
 #balkep{
   float: left;
   margin-right: 15px;
+  height: 270px;
 }
 
 table{
@@ -37,7 +40,7 @@ td:nth-child(2) {
 }
 
 .fejsor{
-  text-align: center;
+  text-align: center !important;
   background-color:  #1D1D4E;
   color: #E7E7FF; 
 }
@@ -47,8 +50,10 @@ td:nth-child(2) {
   padding-top: 5px;
   border-top: 1px solid #1D1D4E;
   font-style: italic;
+  justify-content: center;
 }
 
 img{
   box-shadow: 5px 5px 7px #1D1D4E;
+  border-style: 1px solid #1D1D4E;
 }
