@@ -18,9 +18,8 @@ def sztringben(centimeter):
     print(centimeter)
     meter=centimeter//100
     decimeter=(centimeter-meter*100)//10
-    centimeter=centimeter-meter*100-decimeter*10
+    centimeter=centimeter%10
     ertek=str(meter)+":"+str(decimeter)+":"+str(centimeter)
-    print(ertek.split(":"))
     return ertek
 
 def fajlbeolvasas(fajl):

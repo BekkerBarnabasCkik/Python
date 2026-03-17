@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 
 <head>
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="nemzetiparkok-dunantul.css">
+  <link rel="stylesheet" href="nemzetiparkok-dunantul.js">
+  <title>Nemzeti parkok a Dunántúlon</title>
 </head>
 
 <body onload="start();">
@@ -13,10 +17,10 @@
     <header>
       <h1>Nemzeti parkok a Dunántúlon</h1>
       <nav>
-        <a class="nav-link">Dunántúli nemzeti parkjaink</a>
-        <a class="nav-link">A parkokról röviden</a>
-        <a class="nav-link">Növény- és állatvilág</a>
-        <a class="nav-link">Az első nemzeti parkok</a>
+        <a class="nav-link" href="#parkjaink">Dunántúli nemzeti parkjaink</a>
+        <a class="nav-link" href="#roviden">A parkokról röviden</a>
+        <a class="nav-link" href="#noveny-allatvilag">Növény- és állatvilág</a>
+        <a class="nav-link" href="elso-parkok">Az első nemzeti parkok</a>
       </nav>
     </header>
 
@@ -64,11 +68,17 @@
                 <td>440483</td>
                 <td>Őriszentpéter</td>
               </tr>
+              <tr>
+                <td>Balaton-felvidék Nemzeti Park</td>
+                <td>1997</td>
+                <td>570190</td>
+                <td>Csopak</td>
+              </tr>
             </tbody>
           </table>
         </div>
         <div class="col-lg-6">
-			<!-- Kép helye -->
+          <img src="images/igazgatosagok-nevek.png" alt="Nemzeti park területek" id="terkep">
         </div>
       </div>
     </section>
@@ -77,35 +87,35 @@
       <h2>A parkokról röviden</h2>
       <article>
         <h3>Balaton-felvidéki Nemzeti Park</h3>
-        <a href="http://www.bfnp.hu/">
+        <a href="http://www.bfnp.hu/" target="_blank">
           <img src="images/logo/balaton-felvidek.png" alt="Balaton-felvidék" title="Balaton-felvidék" class="park-logo">
         </a>
         <p>A parkon belül hat tájvédelmi körzetet tudunk megkülönböztetni: Kis-Balaton, Keszthelyi-hegység, Tapolcai-medence, Káli-medence, Pécselyi-medence, Tihanyi-félsziget. A Balaton-felvidék fenti tájegységeinek különlegessége, hogy olyanok, mintha a Mediterráneumhoz tartoznának. A Kis-Balatont például a vizes élőhelyek nemzetközi védelmét szolgáló Ramsari Egyezmény is óvja. Tapolca környékén a barlangok, a Tihanyi-félszigeten a hévforrás-kúpokkal körülvett tavak szubmediterrán ritka, növény és állatvilága, amiket közelebbről is érdemes tanulmányozni. A félsziget ritka fészkelő madara a délies elterjedésű füles kuvik, ám a nyári estéket hangos ciripelésükkel betöltő énekes és manna kabócák is itt élnek.</p>
       </article>
       <article>
         <h3>Duna-Dráva Nemzeti Park</h3>
-        <a href="http://www.ddnp.hu/">
+        <a href="http://www.ddnp.hu/" target="_blank">
           <img src="images/logo/duna-drava.png" alt="Duna-Dráva" title="Duna-Dráva" class="park-logo">
         </a>
         <p>A Dunát és a Drávát övező, érintetlen ártéri erdők és mocsarak világát mutatja be ez a park. Itt van hazánk legnagyobb erdős ártere, a Gemenc, amely a gímszarvas- valamint vaddisznóállományáról nevezetes, ám fontos a madárrezervátuma is. Itt él védett madaraink egy része, mint például a rétisas, a kerecsensólyom és a fekete gólya. A meredek folyópartokat pedig mindenhol partifecske-családok népesítik be.</p>
       </article>
       <article>
         <h3>Duna-Ipoly Nemzeti Park</h3>
-        <a href="http://www.dunaipoly.hu/">
+        <a href="http://www.dunaipoly.hu/" target="_blank">
           <img src="images/logo/duna-ipoly.png" alt="Duna-Ipoly" title="Duna-Ipoly" class="park-logo">
         </a>
         <p>A Duna-Ipoly Nemzeti Park egyedi arculatát a változatos felszíni formáknak köszönheti, hiszen a folyóvölgyek mellett a hegyek és a síkság is bejárhatók. A Pilis és a Börzsöny hegység mentén, a Duna és az Ipoly folyó között elhelyezkedő park rendkívül népszerű kirándulóhely. A mészkőből és dolomitból felépülő hegység remek terep a barlangképződésre. Így érthető, hogy a nemzeti park majdnem 200 barlangjának többsége a Pilis-hegységben található. A nemzeti parkra jellemző növényzet értékei közt számos olyan faj található, amely csak a Kárpát-medencében honos, sőt egyes példányok csak a Duna-Ipoly Nemzeti Park területén élnek. Ilyen például a magyarföldi husáng. A lejtők a megkapó szépségű leánykökörcsin és feketekökörcsin termőhelyei.</p>
       </article>
       <article>
         <h3>Fertő-Hanság Nemzeti Park</h3>
-        <a href="http://www.ferto-hansag.hu/">
+        <a href="http://www.ferto-hansag.hu/" target="_blank">
           <img src="images/logo/ferto-hansag.png" alt="Fertő-Hanság" title="Fertő-Hanság" class="park-logo">
         </a>
         <p>Az Ausztriával közös határon fekvő Fertő tó nemcsak üdülőhely és sportközpont, hanem madarak, nádasok és szikes tavak szépséges otthona. A tó területének felét, a magyar területek közel 90%-át nádas borítja, egyharmadát pedig mocsári növényzet uralja. A tó, a nádasok, a szikesek, a szikes tavak élővilága külön világot képez. A tó vízében elő halfajok közül a réti csík, süllő, lápi póc, a csuka és a fertői nyurga ponty a legértékesebbek. A nádasokban lakik a kecses nagy kócsag, a kanalas gém, a vörös gém, a bölömbika, de költ itt a barna rétihéja is. A tájegység lakója egy jégkorszakból itt maradt elevenszülő gyík is. A szikes tavak több fajnak, így a csörgő récének, a gulipánnak, az aranylilének és a rétisasnak is otthont adnak.</p>
       </article>
       <article>
         <h3>Őrségi Nemzeti Park</h3>
-        <a href="http://www.orseginemzetipark.hu/">
+        <a href="http://www.orseginemzetipark.hu/" target="_blank">
           <img src="images/logo/orseg.png" alt="Őrség" title="Őrség" class="park-logo">
         </a>
         <p>Ez a park az Őrségen túl magában foglalja a Vendvidéket és a Rába szabályozatlan völgyét is. A Vendvidék rétjei május környékén tarka virágforgataggal fogadják az idelátogatókat, a tájat a réti kakukkszegfű, a harangvirág és a boglárka teszi színpompássá. A dombok közti rétek lakója a kockásliliom, a szibériai nőszirom, a lápi tarkalepke, a tűzlepke és a haris. Az Őrségben olyan bükkösöket és erdei-fenyveseket találunk, ahol Európa legkisebb madarai, a sárga és a tüzesfejű királykák tanyáznak. A Rába mentén gyurgyalagok, jégmadarak és szürke gémek költenek, a folyó menti ártéri fűzfaligetekben pedig a nagyon ritka hód és vidra nyomaival találkozhattok.</p>
@@ -116,7 +126,7 @@
       <h2>Növény- és állatvilág</h2>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-8">
             <img src="images/termeszet/denever.png" id="kezdokep" alt="Denevér" onclick="mutasd(this);">
             <img src="images/termeszet/imadkozosaska.png" alt="Imádkozó sáska" onclick="mutasd(this);">
             <img src="images/termeszet/mocsariteknos.png" alt="Mocsári teknős" onclick="mutasd(this);">
@@ -127,7 +137,7 @@
             <img src="images/termeszet/kokorcsin.png" alt="Leánykökörcsin" onclick="mutasd(this);">
             <img src="images/termeszet/tunderrozsa.png" alt="Tündérrózsa" onclick="mutasd(this);">
           </div>
-          <div class="col-lg-6" id="kiemeles">
+          <div class="col-lg-4" id="kiemeles">
             <div id="kiemelt-nev"></div>
             <div id="kiemelt-kep"></div>
             <div id="kiemelt-leiras"></div>
@@ -177,3 +187,6 @@ https://hu.wikipedia.org/wiki/Nemzeti_park
 https://www.yosemite.com/
 
 -->
+
+
+<!--  7. feladatig kész -->

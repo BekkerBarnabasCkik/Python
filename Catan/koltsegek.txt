@@ -1,0 +1,5 @@
+﻿#Tipus;fa;agyag;birka;vas;buza;telepules
+ut;1;1;0;0;0;0
+telepules;1;1;1;0;1;0
+varos;0;0;0;3;2;1
+kartya;0;0;1;1;1;0

@@ -1,0 +1,4 @@
+﻿ut;15
+telepules;5
+varos;4
+kartya;15

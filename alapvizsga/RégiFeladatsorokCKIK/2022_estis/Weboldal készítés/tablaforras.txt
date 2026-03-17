@@ -1,0 +1,31 @@
+<table>
+  <tr>
+    <td>Elnevezés</td>
+  </tr>
+  <tr>
+    <td>Magyar név</td>
+    <td>Kenguru</td>
+  </tr> 
+  <tr>
+    <td>Tudományos név</td>
+    <td>Macropodidae</td>
+  </tr>
+  <tr>
+    <td>Angol név</td>
+    <td>kangaroo</td>
+  </tr> 
+  <tr>
+    <td>Rendszertan</td>
+  </tr>
+  <tr>
+    <td>Rend</td>
+    <td>Erszényesek Diprotodontia</td>
+  </tr>
+  <tr>
+    <td>Család</td>
+    <td>Kengurufélék Macropodidae</td>
+  </tr> 
+  <tr>
+    <td>Egyéb információk</td>
+  </tr>
+ </table> 

@@ -12,13 +12,35 @@ def eldont(adat,sorszam):
     else:
         print("Helytelen válasz")
 
-#Kérjen be a felhasználótól egy 1 és 6 közé esö számot!
-szam=int(input())
+def kerdes(szam):
+        print(toto[szam-1][0])
+
+def eldont(szam, valasz):
+    if valasz==toto[szam-1][1]:
+        print(f"Helyes válasz")
+    else:
+        print(f"Nem jó válasz")
+def lefutas():
+
+    #Kérjen be a felhasználótól egy 1 és 6 közé esö számot!
+    szam=int(input())
+    while szam>6 or szam<1:
+        szam=int(input())
 
 
-#Jelenitse meg a kész függvény, eljárás segitségével a sorszámnak megfelelö kérdést
+    #Jelenitse meg a kész függvény, eljárás segitségével a sorszámnak megfelelö kérdést
+    kerdes(szam)
 
+    #Jelenitse meg a kész függvény, eljárás segitségével a bekért sorszámnak megfelelöen
+    #hogy a válasz helyes, vagy helytelen
+    valasz=int(input())
 
-#Jelenitse meg a kész függvény, eljárás segitségével a bekért sorszámnak megfelelöen
-#hogy a válasz helyes, vagy helytelen
+    eldont(szam, valasz)
 
+lefutas()
+
+valasz=input()
+while valasz!="N":
+    if valasz=="I":
+        lefutas()
+    valasz=input()

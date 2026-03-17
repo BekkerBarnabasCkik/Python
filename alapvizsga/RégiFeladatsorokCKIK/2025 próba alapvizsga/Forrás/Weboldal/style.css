@@ -1,0 +1,125 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+
+main {
+    max-width: 1200px;
+    margin: 4em auto;
+    padding: 0 20px;
+    background-color: #e3f2fd; /* Világoskék háttér a fő tartalomnak */
+    border-radius: 8px;
+    padding-bottom: 2em;
+}
+
+table {
+    width: 70%;
+    margin: 2em auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #64b5f6; /* Kék vonalak a táblázatban */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #1e88e5; /* Kék fejléc */
+    color: #fff;
+    text-align: center;
+}
+
+img:not([title]) {
+    max-width: 300px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px #90caf9; /* Kék árnyék a képeknek */
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+article .container-fluid {
+    margin: 1em auto;
+}
+
+h2, h3 {
+    margin: 0.75em auto;
+    font-style: italic;
+    color: #1976d2; /* Kék címsorok */
+}
+
+article .col * {
+    width: fit-content;
+}
+
+article .col>*:not(h3) {
+    margin: auto;
+}
+
+article:last-of-type .row{
+    align-items: center;
+}
+
+article:first-of-type p {
+    padding-left: 10px;
+}
+
+/* --------------------------------------------------------- */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #bbdefb; /* Világoskék háttér az egész oldalnak */
+    color: #303f9f; /* Sötétkék szöveg */
+}
+
+
+img {
+    width: 100%;
+    padding: 0.5em;
+    display: block;
+    margin: 1em auto;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #90caf9; /* Világoskék hover szín */
+}
+
+
+.kiemelt {
+    color: #0d47a1; /* Még sötétebb kék kiemelés */
+    font-weight: bold;
+}
+
+
+figcaption {
+    text-align: center;
+}
+
+
+
+/* --------------------------------------------------------- */
+
+@media (max-width: 640px) {
+    table {
+        width: 100%;
+    }
+
+    ol {
+        font-size: 90%;
+    }
+
+    #bevezeto img {
+        display: none;
+    }
+}
