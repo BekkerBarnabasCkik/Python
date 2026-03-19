@@ -123,3 +123,41 @@ figcaption {
         display: none;
     }
 }
+
+header, footer{
+    background-color: #0d6efd;
+    color: white;
+    text-align: center;
+}
+
+header{
+    font-variant: small-caps;
+}
+
+#bevezeto img{
+    margin: 0;
+    text-align: right;
+}
+
+a{
+    color: white;
+    font-style: normal;
+}
+ul li{
+    list-style-type: disc;
+    color: #1565c0;
+}
+
+li{
+    line-height: 1.8;
+}
+
+#bevezeto p{
+    text-align: justify;
+    margin-bottom: 25px;
+    border-left: 5px solid #1976d2;
+}
+
+footer{
+    position: sticky;
+}
