@@ -5,6 +5,7 @@ body {
     width: 80%;
     background-size: 50vh;
     background-position: center;
+    background-image: url(images/comics.png);
 }
 
 h1 {
@@ -55,6 +56,7 @@ section {
     background-color: rgba(255, 255, 255, 0.9);
     margin: 0 auto;
     clear: both;
+    padding: 20px;
 }
 
 section ul li:before {
@@ -73,9 +75,28 @@ footer p {
 
 p {
     margin-bottom: 20px;
+    text-align: justify;
 }
 
 img {
     width: 25em;
+    display: block;
+    text-align: center;
+    margin: 10px 0px;
 }
 
+th, td{
+    border: 1px dashed #7D0C37;
+}
+
+header a:hover{
+    color: gold;
+    background-color: rgb(90, 0, 0);
+    text-decoration: underline;
+}
+
+.bevetel{
+    font-style: italic;
+    font-weight: bold;
+    color: darkred;
+}
