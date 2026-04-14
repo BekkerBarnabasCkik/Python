@@ -29,6 +29,23 @@ def Becsapodas(szamok, N, M, Ndb, Mdb, legnagyobb, pozok):
     
     return pozok
 
+# def Vizsgalat(sor, n, legnagyobb, legnagyobbT, adatok, sorT, pozok):
+#     if n<len(pozok):
+#         if adatok[sor+pozok[n][0]][n+poz]        
+#     else:
+#         return legnagyobbT, legnagyobb
+
+
+# def mozgas(adatok, sor, SorN, legnagyobb, LegnagyobbT, SorT):
+#     pozok=[(0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+#     if sor<len(adatok):
+#         if SorN<SorT:
+            
+#     else:
+#         return LegnagyobbT    
+        
+
+
 def main():
     n=int(input())
     m=int(input())
